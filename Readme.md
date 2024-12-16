@@ -1,3 +1,4 @@
+Some extra commands to learn after learning from the python file
 A concise summary of the waiting commands where `asyncio` can switch tasks:
 
 
@@ -32,9 +33,9 @@ A concise summary of the waiting commands where `asyncio` can switch tasks:
 
 
 ### **5. `asyncio.gather()`**
-- Runs multiple coroutines concurrently, switching between them.
+- Runs multiple coroutines concurrently, switching between them. returns the result in a list
   ```python
-  await asyncio.gather(task1(), task2())  # Task switch
+  await asyncio.gather(task1(), task2())  # Task switch , it doesn't have error handling
   ```
 
 
