@@ -1,6 +1,5 @@
 A concise summary of the waiting commands where `asyncio` can switch tasks:
 
----
 
 ### **1. `asyncio.sleep()`**
 - Pauses the coroutine, allowing the event loop to run other tasks.
@@ -8,7 +7,6 @@ A concise summary of the waiting commands where `asyncio` can switch tasks:
   await asyncio.sleep(2)  # Task switch
   ```
 
----
 
 ### **2. I/O Operations**
 - Includes `asyncio.open_connection()`, `asyncio.StreamReader.read()`, etc., which switch tasks while waiting for I/O.
@@ -16,7 +14,6 @@ A concise summary of the waiting commands where `asyncio` can switch tasks:
   reader, writer = await asyncio.open_connection('example.com', 80)  # Task switch
   ```
 
----
 
 ### **3. Synchronization Primitives**
 - `asyncio.Lock`, `asyncio.Queue`, and similar constructs cause task switches when waiting.
@@ -25,7 +22,6 @@ A concise summary of the waiting commands where `asyncio` can switch tasks:
       await queue.get()  # Task switch if queue is empty
   ```
 
----
 
 ### **4. Timeout Functions**
 - `asyncio.wait_for()` or `asyncio.wait()` switches tasks during the wait.
@@ -34,7 +30,6 @@ A concise summary of the waiting commands where `asyncio` can switch tasks:
   await asyncio.wait([coro1(), coro2()])  # Task switch between coroutines
   ```
 
----
 
 ### **5. `asyncio.gather()`**
 - Runs multiple coroutines concurrently, switching between them.
@@ -42,7 +37,6 @@ A concise summary of the waiting commands where `asyncio` can switch tasks:
   await asyncio.gather(task1(), task2())  # Task switch
   ```
 
----
 
 ### **6. Futures**
 - Task switches when awaiting unresolved `asyncio.Future`.
@@ -50,14 +44,11 @@ A concise summary of the waiting commands where `asyncio` can switch tasks:
   result = await future  # Task switch until resolved
   ```
 
----
 
 ### **7. `asyncio.Event`**
 - Switches tasks while waiting for an event to be set.
   ```python
   await event.wait()  # Task switch
   ```
-
----
 
 **General Rule**: `asyncio` switches tasks when `await` encounters an operation that yields control to the event loop.
